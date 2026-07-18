@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --font-display: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
+
+  --color-cream: #f7f3ea;
+  --color-cream-soft: #fbf9f4;
+  --color-beige: #e8dfcb;
+  --color-beige-dark: #d9cdaf;
+  --color-brown: #6e4b36;
+  --color-brown-light: #8a6248;
+  --color-olive: #6c7350;
+  --color-olive-light: #8b9270;
+  --color-olive-dark: #4e5339;
+  --color-gray: #8b8579;
+  --color-ink: #2a2620;
+
+  /* dark mode surface tones */
+  --color-ink-950: #1c1b17;
+  --color-ink-900: #262420;
+  --color-ink-800: #35322b;
+}
+
+/* Dark mode variant driven by a class on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.dark body {
+  background-color: var(--color-ink-950);
+  color: var(--color-cream);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* thin editorial divider */
+.hairline {
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.15;
+}
+
+/* utility: fade-up on load */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 0.7s ease both;
+}
+
+/* focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-olive);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar - subtle */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-beige-dark);
+  border-radius: 8px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: var(--color-ink-800);
+}
